@@ -28,7 +28,7 @@ router.post("/login", async (req, res) => {
   }
 });
 // admin
-router.get("/", admin, async (req, res) => {
+router.get("/allUsers", async (req, res) => {
   try {
     res.json(await userController.findAllUsers());
   } catch (err) {

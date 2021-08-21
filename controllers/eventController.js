@@ -23,7 +23,7 @@ class Local {
     );
   };
   // delete event//
-  async deleteRest(id) {
+  async deleteEvent(id) {
     return Event.findByIdAndRemove({ _id: id });
   };
 }

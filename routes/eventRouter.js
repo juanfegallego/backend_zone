@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const eventController = require("../controllers/eventController");
-const admin = require("../middleware/admin.js");
+const admin = require("../middleware/admin");
 const auth = require("../middleware/auth");
 
 //GET - Return all Events in the DB
@@ -17,7 +17,7 @@ router.get("/", async (req, res) => {
 
 //POST - Creates a new Event in the DB
 //  requeire de el rol de admin *
-router.post("/create",async (req, res) => {
+router.post("/create",admin, async (req, res) => {
   try {
     const event = req.body;
     res.json(await eventController.createEvent(event));
@@ -41,9 +41,9 @@ router.put("/",admin, async (req, res) => {
 
 // admin *
 
-router.delete("/:id",admin,async (req, res) => {
+router.post("/:adminDelete",admin,  async (req, res) => {
   try {
-    const id = req.params.id;
+    const id = req.body.id;
     res.json(await eventController.deleteEvent(id));
   } catch (err) {
     return res.status(500).json({

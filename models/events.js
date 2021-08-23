@@ -30,9 +30,12 @@ const eventSchema = new Schema({
     lowercase:true,
   },
   capacity:{
-    type:String,
+    type:Number,
     lowercase:true,
   },
+  attendance:{
+    type:Array,
+  }, 
 
 });
 

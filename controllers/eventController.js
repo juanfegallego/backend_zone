@@ -13,7 +13,7 @@ class Local {
   };
 
 
-  async modifyRest(data) {
+  async modifyEvent(data) {
     return Event.findByIdAndUpdate(
       //Where
       { _id: data.id },
@@ -26,6 +26,13 @@ class Local {
   async deleteEvent(id) {
     return Event.findByIdAndRemove({ _id: id });
   };
+
+  async accesEvent(event) {
+    return Event.findByIdAndUpdate(
+      { _id: event.id },
+      { $push:{ attendance: event.attendance }});
+  }
+
 }
 
 let eventController = new Local();

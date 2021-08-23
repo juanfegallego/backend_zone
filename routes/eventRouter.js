@@ -52,5 +52,16 @@ router.post("/:adminDelete",admin,  async (req, res) => {
   }
 });
 
+router.put("/join", auth, async (req, res) => {
+  try {
+    const event = req.body;
+    res.json(await eventController.accesEvent(event));
+  } catch (err) {
+    return res.status(500).json({
+      message: err.message,
+    });
+  }
+});
+
 
 module.exports = router;
